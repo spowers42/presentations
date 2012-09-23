@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=1024"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		
+		<title>Disco Lightning Talk</title>
+		<meta name="description" content="A short talk about the Disco mapreduce framework"/>
+		<meta name="author" content="Scott P. Powers"/>
+		
+		<!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+		<link rel="stylesheet" href="css/impress-demo.css"/>-->
+			<style>
+				body{
+					width:1024px;
+					font-size:20px;
+					background: rgb(215,215,215);
+					background: -webkit-radial-gradient(#FFFFFF, #68BEFB);
+					}
+				p{
+					width:1000px;
+					text-align:center;
+				}
+		</style>
+		<style>
+		
+		</style>
+	</head>
+	<body>
+		<div id="impress">
+			<div id="start" class="step" data-z="25000">
+				<p style="font-size:80px;">Mapreduce in python using Disco</p>
+			</div>
+			
+			<div id="slide2" class="step">
+				<p style="font-size:68px;">What is mapreduce?</p>
+			</div>
+			<div id="slide3" class="step" data-x="1600" data-z="100">
+				<p style="font-size:56px;">Map and reduce from functional programming applied to collections at scale.</p>
+			</div>
+			<div id="slide4" class="step" data-x="1600" data-y="-680" data-rotate="-90" style="width:600px">
+				<p style="font-size:56px;"><em>Map</em></p>
+				<p style="font-size:48px;">Applies a function over a collection, returning another collection.</p>
+			</div>
+			<div id="slide5" class="step" data-x="1600" data-y="680" data-rotate="90" style="width:600px">
+				<p style="font-size:56px;"><em>Reduce</em></p>
+				<p style="font-size:48px;">Applies a function to a collection to to produce a scalar value</p>
+			</div>
+			<div id="slide6" class="step" data-x="0" data-y="2200" data-z="-5000">
+				<p style="font-size:56px;">At scale?</p>
+			</div>
+			<div id="slide7" class="step" data-x="0" data-y="2200" data-z="100">
+				<p style="font-size:56px;">The collections are large and distributed across a cluster.</p>
+			</div>
+			<div id="slide8" class="step" data-y="-1500" data-z="-3000">
+				<p style="font-size:48px">Mapreduce is in many platforms, including many noSQL datastores</p>
+			</div>
+			<div id="slide9" class="step" data-y="-2500" data-z="-3000">
+				<img src="img/hadoop-logo.jpg"/>
+				<img src="img/logo-mongodb.png"/>
+				<img src="img/riak-transparent-small.png"/>
+			</div>
+			<div id="slide10" class="step" data-x="-1600">
+				<p style="font-size:48px">Disco provides a mapreduce platform for jobs written in python</p>
+			</div>
+			<div id="slide11" class="step" datay-x="-2500" data-y="1000">
+				<p style="font-size:68px">Components</p>
+				<p style="font-size:48px">Distributed file system<br>master node/scheduler<br>Distributed DB</p>
+				<p style="font-size:48px">These components are written in erlang, a good choice for these tasks</p>
+			</div>
+			<div id="slide12" class="step" data-x="-3000" data-y="-3000" data-rotate="-90">
+				<p style="font-size:48px">jobs are written in python</p>
+				<pre>
+		from disco.core import Job
+		
+		class wordCount(Job):
+			"""a trivial but classic example of mapreduce"""
+			sort = True
+			def map(line, params):
+				for word in line.split()
+					yield word, 1  #yield a key value pair
+					
+			def reduce(iter params):
+				#due to distributed jobs imports have to be included in the job
+				from disco.util import kvgroup
+				#kvgroup groups values by their key
+				for word, counts in kvgroup(iter):
+					yield word, sum(counts)
+					
+			@staticmethod
+			def map_reader(fd, size, url, params):
+				for line in fd:
+					yield line
+				</pre>
+			</div>
+			<div id="slide13" class="step" data-x="-2200" data-y="2200" data-rotate="90">
+				<p style="font-size:80px">Questions?</p>
+				<p style="font-size:26px">Scott Powers<br>spowers.42@gmail.com<br>funccoder.blogspot.com</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/impress.js"></script>
+		<script type="text/javascript">impress().init();</script>
+	</body>
+</html>

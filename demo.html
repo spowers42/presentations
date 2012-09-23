@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			body{
+				width:1024px;
+				font-size:20px;
+				background: rgb(215,215,215);
+				background: -webkit-radial-gradient(#FFFFFF, #68BEFB);
+		</style>
+		<title>Impress Demo</title>
+	</head>
+	<body>
+		<div id="impress">
+			<div id="start" class="step slide">
+				<p style='width:1300px;font-size:80px;text-align:center'>Create Visualizations!</p>
+				<p>Impress.js </p>
+			</div>
+			
+			<div id="slide2" class="step slide" data-x="-1200" data-y="0">
+				<p style='width:1300px;font-size:80px;'>
+				First slide moves from left to right</p>
+				<p>Impress.js </p>
+			</div>
+			
+			<div id="slide3" class="step" data-x="2200" data-y="500">
+				<p>this slide moves from left to right and bottom to top</p>
+			</div>
+		
+			<div id="slide4" class="step" data-x="2200" data-y="-500">
+				<p>this moves from top to bottom</p>
+			</div>
+			
+			<div id="slide5" class="step" data-x="3200" data-rotate="150">
+				<p>this slide rotates along the z-axis<p>
+			</div>
+			
+			<div id="slide6" class="step" data-x="6200" data-scale='3'>
+				<p>this is HUGE!</p>
+			</div>
+			
+			<div id="slide7" class="step" data-x="4200" data-y="1500" data-z="1500">
+				<p>away!</p>
+			</div>
+			
+			<div id="slide8" class="step" data-x="4900" data-y="1500" data-z="100">
+				<p>towards</p>
+			</div>
+			
+			<div id="slide9" class="step" data-x="5600" data-y="1500" data-z="-1500">
+				<p>further towards</p>
+			</div>
+			
+			<div id="slide10" class="step" data-x="6600" data-y="3000" data-scale="10">
+				<p>DONE!</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/impress.js"></script>
+		<script type="text/javascript">impress().init();</script>
+	</body>
+</html>
